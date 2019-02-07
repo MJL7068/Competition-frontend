@@ -1,5 +1,5 @@
 import axios from 'axios'
-const baseUrl = 'http://localhost:3001'
+const baseUrl = '/api'
 
 const getWinners = () => {
     const request = axios.get(baseUrl + '/winners')
@@ -11,8 +11,11 @@ const getNumber = () => {
     return request.then(response => response.data)
 }
 
-const increment = () => {
-    const request = axios.post(baseUrl + '/count')
+const increment = (name) => {
+    const reqObject = {
+        name: name
+    }
+    const request = axios.post(baseUrl + '/count', reqObject)
     return request.then(response => response.data)
 }
 
